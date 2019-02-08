@@ -1,0 +1,33 @@
+{
+  "name": "make-maestro-great-again",
+  "version": "0.0.0",
+  "description": "",
+  "main": "lib/server",
+  "scripts": {
+    "test": "jest",
+    "start": "node .",
+    "dev": "nodemon"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Iteam1337/make-maestro-great-again.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Iteam1337/make-maestro-great-again/issues"
+  },
+  "homepage": "https://github.com/Iteam1337/make-maestro-great-again#readme",
+  "dependencies": {
+    "@types/moment": "^2.13.0",
+    "cors": "^2.8.5",
+    "elasticsearch": "^15.4.1",
+    "express": "^4.16.4",
+    "moment": "^2.24.0"
+  },
+  "devDependencies": {
+    "@types/elasticsearch": "^5.0.30",
+    "@types/express": "^4.16.1",
+    "nodemon": "^1.18.9"
+  }
+}
