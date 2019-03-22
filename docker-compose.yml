@@ -2,9 +2,13 @@ version: '3'
 services:
   elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch:6.6.0
+    networks:
+      - wejay
     environment:
       - bootstrap.memory_lock=true
       - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    volumes:
+      - esdata:/usr/share/elasticsearch/data
     ulimits:
       memlock:
         soft: -1
@@ -19,6 +23,8 @@ services:
 
   kibana:
     image: docker.elastic.co/kibana/kibana:6.6.0
+    networks:
+      - wejay
     environment:
       SERVER_NAME: kibana
       ELASTICSEARCH_URL: http://elasticsearch:9200
@@ -31,12 +37,22 @@ services:
       retries: 3
     depends_on:
       - elasticsearch
-  
+
   logger:
     build: .
+    networks:
+      - wejay
     environment:
       ELASTIC_HOST: elasticsearch:9200
       ELASTIC_LOG_LEVEL: info
       PORT: 3001
     ports:
       - 3001:3001
+
+networks:
+  wejay:
+    external: true
+
+volumes:
+  esdata:
+    external: true
